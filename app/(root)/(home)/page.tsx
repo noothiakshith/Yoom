@@ -1,10 +1,11 @@
+import MeetingTypeList from '@/components/MeetingTypeList';
 import React from 'react';
 
 const Home = () => {
   const now = new Date();
   // Convert time to Indian time zone
   const time = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata' });
-  const date = now.toDateString();
+  const date = (new Intl.DateTimeFormat('en-IN', { dateStyle: 'full' })).format(now);
   return (
     <section className='flex flex-col gap-10 size-full text-white'>
       <div className="h-[300px] w-full rounded-[20px] bg-hero bg-cover">
@@ -16,6 +17,7 @@ const Home = () => {
           </div>
         </div>
       </div>  
+      <MeetingTypeList />
     </section>
   );
 };
